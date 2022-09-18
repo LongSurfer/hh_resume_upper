@@ -13,7 +13,7 @@ def browser_management():
     browser.config.browser_name = 'chrome'
     browser.config.base_url = 'https://hh.ru/'
     # browser.config.timeout = 5
-
+    # browser.config.hold_browser_open = True
 
 @pytest.fixture(scope='function', autouse=True)
 def browser_size():

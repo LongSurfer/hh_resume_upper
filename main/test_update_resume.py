@@ -1,9 +1,9 @@
 import os
 import time
 import allure
-from selene import have
+from selene import have, be
 from selene.support.shared import browser
-
+from utils import attach
 
 login = os.getenv('LOGIN')
 password = os.getenv('PASSWORD')
@@ -23,6 +23,10 @@ def test_up_the_resume():
     with allure.step('Update resume'):
         update_button = browser.element('[data-qa="resume-update-button"]')
         update_button.click()
+
+    attach.add_screenshot(browser)
+    attach.add_html(browser)
+    attach.add_logs(browser)
 
 # Repite update:
 if __name__ == "__main__":
