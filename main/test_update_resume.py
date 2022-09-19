@@ -1,7 +1,7 @@
 import os
 import time
 import allure
-from selene import have, be
+from selene.support.conditions import have
 
 
 
