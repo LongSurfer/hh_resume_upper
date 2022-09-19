@@ -4,8 +4,6 @@ import allure
 from selene.support.conditions import have
 
 
-
-
 login = os.getenv('LOGIN')
 password = os.getenv('PASSWORD')
 
