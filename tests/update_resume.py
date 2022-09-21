@@ -1,20 +1,19 @@
+import os
 import time
-
-from selene import command
 from selene.support.conditions import have
 from selene.support.shared import browser
-
-LOGIN = ''
-PASSWORD = ''
+from selene import command
 
 
 def up_the_resume():
+    login = os.getenv('LOGIN')
+    password = os.getenv('PASSWORD')
 
     browser.open('https://hh.ru')
     browser.element('[data-qa="login"]').click()
     browser.element('[data-qa="expand-login-by-password"]').click()
-    browser.element('[data-qa="login-input-username"]').send_keys(LOGIN)
-    browser.element('[data-qa="login-input-password"]').send_keys(PASSWORD)
+    browser.element('[data-qa="login-input-username"]').send_keys(login)
+    browser.element('[data-qa="login-input-password"]').send_keys(password)
     browser.element('[data-qa="account-login-submit"]').click()
     browser.element('[data-qa="mainmenu_myResumes"]').click()
 
