@@ -1,17 +1,20 @@
 import os
 import time
 import allure
+from selene import command
 from selene.support.conditions import have
+from selene.support.shared import browser
 
+from utils import attach
 
 login = os.getenv('LOGIN')
 password = os.getenv('PASSWORD')
 
-def test_up_the_resume(setup_browser):
-    browser = setup_browser
+def test_up_the_resume():
+
 
     with allure.step('Enter with password'):
-        browser.open('https://hh.ru/account/login')
+        browser.open('account/login')
         browser.element('[data-qa="expand-login-by-password"]').click()
         browser.element('[data-qa="login-input-username"]').send_keys(f'{login}')
         browser.element('[data-qa="login-input-password"]').send_keys(f'{password}')
@@ -23,11 +26,11 @@ def test_up_the_resume(setup_browser):
         resume.click()
     with allure.step('Update resume'):
         update_button = browser.element('[data-qa="resume-update-button"]')
-        update_button.click()
+        update_button.perform(command.js.click)
 
-    # attach.add_screenshot(browser)
-    # attach.add_html(browser)
-    # attach.add_logs(browser)
+    attach.add_screenshot(browser)
+    attach.add_html(browser)
+    attach.add_logs(browser)
 
 # Repite update:
 if __name__ == "__main__":
